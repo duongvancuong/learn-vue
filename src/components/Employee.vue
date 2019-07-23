@@ -1,9 +1,15 @@
 <template>
   <div id="app" class="small-container">
     <h1>Employees</h1>
+    <router-view/>
+
     <employee-form @add:employee="addEmployee" />
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
     <employee-table
       :employees="employees"
+      :loading="loading"
       @delete:employee="deleteEmployee"
       @edit:employee="editEmployee"
     />
@@ -14,21 +20,32 @@
 import EmployeeTable from '@/components/EmployeeTable';
 import EmployeeForm from '@/components/EmployeeForm';
 import { API } from '../services/api';
+import { mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
-  name: 'HelloWorld',
+  name: 'Employee',
   components: {
     EmployeeTable,
     EmployeeForm,
   },
   data() {
     return {
-      employees: [],
+      // employees: [],
       error: false,
+      loading: false,
     };
   },
-  mounted() {
-    this.getEmployees();
+  computed: {
+    ...mapGetters({
+      employees: 'getEmployees',
+    })
+  },
+  // mounted() {
+  //   this.getEmployees();
+  // },
+  created() {
+    this.$store.dispatch('getListData');
   },
   methods: {
     addEmployee(employee) {
@@ -59,9 +76,11 @@ export default {
         });
     },
     getEmployees() {
+      this.loading = true;
       API.client.get('https://jsonplaceholder.typicode.com/users')
         .then((res) => {
           this.employees = res.data;
+          this.loading = false;
         })
         .catch(() => {
           this.error = true;
