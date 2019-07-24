@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-const Employee = () => import('@/components/Employee');
+const Employee = () => import('../pages/Employee.vue');
 const EmployeeProfile = () => import('@/components/EmployeeProfile');
 const PageNotFound = () => import('@/components/NotFound');
 const Login = () => import('@/components/Login');
