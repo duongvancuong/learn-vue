@@ -1,6 +1,9 @@
 <template>
   <div id="employee-table">
-    <p v-if="employees.length < 1" class="empty-table">
+    <div v-if="loading" class="loading">
+      Loading...
+    </div>
+    <p v-else-if="(employees.length < 1) && !loading" class="empty-table">
       No Employees
     </p>
     <table v-else>
@@ -27,6 +30,7 @@
           <td v-else>
             <button @click="editMode(employee)">Edit</button>
             <button @click="$emit('delete:employee', employee.id)">Delete</button>
+            <router-link :to="{name: 'employee-profile', params: {id: employee.id}}">Detail</router-link>
           </td>
         </tr>
       </tbody>
@@ -39,6 +43,7 @@ export default {
   name: 'employee-table',
   props: {
     employees: Array,
+    loading: Boolean,
   },
   data() {
     return {
@@ -56,7 +61,7 @@ export default {
     },
     editEmployee(employee) {
       if (employee.name === '' || employee.email === '') return;
-      this.$emit('edit:employee', employee.id, employee);
+      this.$emit('edit:employee', { id: employee.id, updatedEmployee: employee });
       this.editing = null;
     },
   },
