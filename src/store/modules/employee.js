@@ -1,5 +1,5 @@
 import * as types from '../mutation-types';
-import api from '../api';
+import { user } from '../api';
 
 const state = {
   employees: [],
@@ -20,7 +20,7 @@ const getters = {
 };
 
 const mutations = {
-  [types.GET_LIST_DATA] (state, data) {
+  [types.GET_LIST_EMPLOYEES] (state, data) {
     state.employees = data;
   },
   [types.ADD_EMPLOYEE] (state, data) {
@@ -32,7 +32,7 @@ const mutations = {
   [types.UPDATE_EMPLOYEE] (state, data) {
     state.employees = state.employees.map(employee => (employee.id === data.id ? data : employee));
   },
-  [types.COM_IS_LOADING] (state, status) {
+  [types.COM_IS_EMPLOYEE_LOADING] (state, status) {
     state.isLoading = status;
   },
   [types.COM_IS_ADDING] (state, status) {
@@ -48,29 +48,29 @@ const mutations = {
 
 const actions = {
   getListData: function ({ commit, state }) {
-    commit(types.COM_IS_LOADING, true);
-    api.getEmployees(state, res => {
-      commit(types.GET_LIST_DATA, res);
-      commit(types.COM_IS_LOADING, false);
+    commit(types.COM_IS_EMPLOYEE_LOADING, true);
+    user.getEmployees(state, res => {
+      commit(types.GET_LIST_EMPLOYEES, res);
+      commit(types.COM_IS_EMPLOYEE_LOADING, false);
     });
   },
   addEmployee: function ({ commit }, employee) {
     commit(types.COM_IS_ADDING, true);
-    api.addEmployee(employee, res => {
+    user.addEmployee(employee, res => {
       commit(types.ADD_EMPLOYEE, res);
       commit(types.COM_IS_ADDING, false);
     });
   },
   deleteEmployee: function ({ commit }, id) {
     commit(types.COM_IS_DELETING, true);
-    api.deleteEmployee(id, () => {
+    user.deleteEmployee(id, () => {
       commit(types.DELETE_EMPLOYEE, id);
       commit(types.COM_IS_DELETING, false);
     });
   },
   editEmployee: function ({ commit }, data) {
     commit(types.COM_IS_UPDATING, true);
-    api.editEmployee(data, (res) => {
+    user.editEmployee(data, (res) => {
       commit(types.UPDATE_EMPLOYEE, res);
       commit(types.COM_IS_UPDATING, false);
     });

@@ -1,10 +1,20 @@
-// Home module
-export const GET_LIST_DATA = 'GET_LIST_DATA';
+// Employee module
+export const GET_LIST_EMPLOYEES = 'GET_LIST_EMPLOYEES';
 export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
 export const DELETE_EMPLOYEE = 'DELETE_EMPLOYEE';
 export const UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE';
 export const HANDLE_ERROR = 'HANDLE_ERROR'
-export const COM_IS_LOADING = 'COM_IS_LOADING';
+export const COM_IS_EMPLOYEE_LOADING = 'COM_IS_EMPLOYEE_LOADING';
 export const COM_IS_ADDING = 'COM_IS_ADDING';
 export const COM_IS_DELETING = 'COM_IS_DELETING';
 export const COM_IS_UPDATING = 'COM_IS_UPDATING';
+
+
+//REDDIT module
+export const GET_LIST_DATA = 'GET_LIST_DATA';
+export const GET_MORE_LIST_DATA = 'GET_MORE_LIST_DATA';
+export const CATEGORY_CHANGE = 'CATEGORY_CHANGE';
+export const SORTWAY_CHANGE = 'SORTWAY_CHANGE';
+export const CLEAR_LIST = 'CLEAR_LIST';
+export const COM_IS_LOADING = 'COM_IS_LOADING';
+export const SHOW_ERROR_TOAST = 'SHOW_ERROR_TOAST';

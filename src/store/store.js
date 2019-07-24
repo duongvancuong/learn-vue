@@ -6,6 +6,9 @@ import actions from './actions';
 import getters from './getters';
 
 import employee from './modules/employee';
+import redidit from './modules/redidit';
+import imgView from './modules/imgView';
+import post from './modules/post';
 
 Vue.use(Vuex);
 
@@ -19,5 +22,8 @@ export const store = new Vuex.Store({
   actions,
   modules: {
     employee,
+    redidit,
+    imgView,
+    post,
   },
 });

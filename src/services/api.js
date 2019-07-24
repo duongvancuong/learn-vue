@@ -7,7 +7,6 @@ const DEFAULT_API_CONFIG = {
   headers: {
     Accept: 'application/json',
     'Content-type': 'application/json; charset=UTF-8',
-    Authorization: `Bearer ${process.env.API_KEY}`,
   },
 };
 
