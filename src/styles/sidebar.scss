@@ -12,9 +12,7 @@ $icon-url-users: "${icon-url-base}/users.svg";
 $icon-url-settings: "${icon-url-base}/tools.svg";
 
 body{
-	background:$color-1st;
 	margin:0;
-	font-family:"Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
 	color:#fff;
 	padding-left:$menu-width-desktop;
 }

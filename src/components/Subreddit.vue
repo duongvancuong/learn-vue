@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/subreddit';
+@import '../styles/subreddit';
 </style>

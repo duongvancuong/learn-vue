@@ -2,9 +2,16 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueLazyload from 'vue-lazyload';
+import ElementUI from 'element-ui';
+import VueTouch from 'vue-touch';
+
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import 'element-ui/lib/theme-chalk/index.css';
+// Global CSS
+import '@/styles/index.scss';
+
 import App from './App';
 import router from './router';
-import VueTouch from 'vue-touch';
 import { store } from './store/store';
 
 Vue.config.productionTip = false;
@@ -22,6 +29,7 @@ VueTouch.registerCustomEvent('doubletap', {
 
 //Apply plugin for vue
 Vue.use(VueTouch, {name: 'v-touch'});
+Vue.use(ElementUI);
 
 Vue.use(VueLazyload, {
   preLoad: 1.2,

@@ -46,5 +46,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/sidebar';
+@import '../styles/sidebar';
 </style>
