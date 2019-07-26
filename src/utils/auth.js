@@ -1,10 +1,15 @@
+import Cookies from 'js-cookie';
+
+const TokenKey = 'vue_token';
+
 export function getToken() {
-  return 'TOKEN_KEY';
-}
+  return Cookies.get(TokenKey);
+};
+
 export function setToken(token) {
-  return token;
-}
+  return Cookies.set(TokenKey, token);
+};
 
 export function removeToken() {
-  return '';
-}
+  return Cookies.remove(TokenKey);
+};

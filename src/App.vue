@@ -5,26 +5,20 @@
         <router-view></router-view>
       </keep-alive>
     </transition>
-    <sidebar></sidebar>
+    <!-- <sidebar></sidebar> -->
   </div>
 </template>
 
 <script>
 require('./assets/css/animation.css');
-import Sidebar from './components/Sidebar';
+// import Sidebar from './components/Sidebar';
 
 export default {
   name: 'App',
-  components: {
-    Sidebar,
-  }
+  // components: {
+  //   Sidebar,
+  // }
 };
 </script>
 
-<style>
-#app {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>

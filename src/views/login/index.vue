@@ -8,7 +8,7 @@
       auto-complete="on"
       label-position="left"
     >
-      <div class="title-container"><h3 class="title">Login Form</h3></div>
+      <div class="title-container"><h3 class="title">Welcome...!</h3></div>
 
       <el-form-item prop="email">
         <span class="svg-container"><i class="el-icon-user" /></span>
@@ -110,8 +110,8 @@ export default {
             this.$router.push({ path: this.redirect || '/' });
             this.loading = false;
           }).catch((error) => {
-            let result = error.response.data;
-            this.$message.error(result.info);
+            let result = error.response ? error.response.data.error : error.message;
+            this.$message.error(result);
             this.loading = false;
             this.loginForm = {
               username: '',
@@ -119,7 +119,6 @@ export default {
             };
           });
         } else {
-          console.log('error submit!!');
           return false;
         }
       });

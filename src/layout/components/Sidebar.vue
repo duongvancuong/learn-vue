@@ -2,7 +2,7 @@
   <nav class="menu" tabindex="0">
     <div class="smartphone-menu-trigger"></div>
     <header class="avatar">
-      <img src="../assets/images/avatar.png" />
+      <img src="../../assets/images/avatar.png" />
       <h2>TekFun</h2>
     </header>
     <ul>
@@ -46,5 +46,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/sidebar';
+@import '../../styles/sidebar';
+body{
+	margin:0;
+	color:#fff;
+	padding-left:$menu-width-desktop;
+}
 </style>

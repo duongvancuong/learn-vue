@@ -13,10 +13,10 @@ import '@/styles/index.scss';
 import App from './App';
 import router from './router';
 import { store } from './store/store';
+import permission from '@/directive/permission/index.js';
 
-Vue.config.productionTip = false;
+import '@/permission';
 
-//vue-touch gesture configuration
 VueTouch.config.swipe = {
   direction: 'horizontal'
 };
@@ -38,6 +38,10 @@ Vue.use(VueLazyload, {
   attempt: 2,
   listenEvents: [ 'scroll' ]
 });
+
+Vue.use(permission);
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

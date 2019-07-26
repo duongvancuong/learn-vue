@@ -3,7 +3,7 @@ import { getToken  } from '@/utils/auth';
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API || "https://reqres.in/",
-  timeout: 10000,
+  timeout: 60000,
   // withCredentials: true,
 });
 
@@ -25,7 +25,8 @@ service.interceptors.response.use(
   },
   error => {
     console.log(error.response);
-    // Do fucking awesome
+    if (!error.response)
+      throw Object.assign({ error_code: 700, message: 'Something went wrong!' });
     return Promise.reject(error);
   }
 )

@@ -46,10 +46,8 @@ export default {
     login() {
       this.submitting = true;
       if (!!this.isValidForm.username || !!this.isValidForm.passowrd) {
-        console.log(123)
       } else {
         this.submitting = false;
-        console.log('success')
       }
     },
 

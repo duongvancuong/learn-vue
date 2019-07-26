@@ -57,8 +57,7 @@ const actions = {
           reject('Verification failed, please Login again.');
         }
 
-        const { roles, email, avatar, permissions, first_name, last_name, id } = data;
-        // roles must be a non-empty array
+        const { roles = ['admin'], email, avatar, permissions = ['admin'], first_name, last_name, id } = data;
         if (!roles || roles.length <= 0) {
           reject('getInfo: roles must be a non-null array!');
         }
@@ -66,7 +65,7 @@ const actions = {
         commit('SET_ROLES', roles);
         commit('SET_INFO', { email, avatar, first_name, last_name, id });
         commit('SET_PREMISSIONS', permissions);
-        resolve(data);
+        resolve({ ...data, roles: ['admin'], permissions: ['admin'] });
       }).catch(error => {
         reject(error);
       })

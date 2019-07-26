@@ -55,6 +55,17 @@ export const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ];
 
+export const asyncRoutes = [
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('@/layout'),
+    meta: {
+      title: 'Admin Site',
+    }
+  }
+];
+
 const createRouter = () => new Router({
   mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
