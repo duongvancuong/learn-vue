@@ -11,7 +11,7 @@
 </template>
 
 <script>
-require('../assets/sass/subreddits.scss');
+require('../styles/subreddits.scss');
 import Subreddit from './Subreddit';
 import { mapMutations, mapGetters, mapActions } from 'vuex';
 

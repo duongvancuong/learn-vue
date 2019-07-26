@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     closeViewer () {
-      console.log('Exit Viewer!');
       this.isLoading = true;
     },
     delayLoading () {
@@ -41,7 +40,6 @@ export default {
       {
         this.delayLoading();
       } else {
-        console.log('imgURL is empty!');
         this.isLoading = true;
       }
     },

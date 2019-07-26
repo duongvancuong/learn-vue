@@ -50,20 +50,14 @@ export default {
       return linkArray[linkArray.length - 1] === 'jpg';
     },
     sendImgData: function(imgUrl) {
-      console.log(imgUrl);
       if (this.hasImgLink(imgUrl))
       {
-        console.log('hasImage');
         this.$store.dispatch('passURL', imgUrl);
       } else {
-        console.log('OnlyThumbnail');
-        console.log(this.item.data.thumbnail);
         this.$store.dispatch('passURL', this.item.data.thumbnail);
       }
-      console.log('commitURL!');
     },
     sendID: function(id) {
-      console.log('ID sent!');
     }
   },
   filters: {
@@ -81,5 +75,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/subreddit';
+@import '../styles/subreddit';
 </style>
