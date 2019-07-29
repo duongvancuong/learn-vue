@@ -13,7 +13,7 @@ export function login(data) {
 
 export function getInfo() {
   return fetch({
-      url: '/api/user/2',
+      url: '/api/users/2',
       method: 'get'
   })
 };

@@ -24,15 +24,4 @@ export default {
   position: relative;
   overflow: hidden;
 }
-.fixed-header+.app-main {
-  padding-top: 50px;
-}
-</style>
-
-<style lang="scss">
-.el-popup-parent--hidden {
-  .fixed-header {
-    padding-right: 15px;
-  }
-}
 </style>

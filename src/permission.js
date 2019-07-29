@@ -3,6 +3,7 @@ import { store } from './store/store';
 import { Message } from 'element-ui';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import getPageTitle from '@/utils/get-page-title';
 
 import { getToken } from '@/utils/auth';
 
@@ -12,6 +13,7 @@ const whiteList = ['/login'];
 
 router.beforeEach(async(to, from, next) => {
   NProgress.start();
+  document.title = getPageTitle(to.meta.title);
 
   const hasToken = getToken();
 
@@ -22,7 +24,11 @@ router.beforeEach(async(to, from, next) => {
     } else {
       const hasRoles = store.getters.roles && store.getters.roles.length > 0;
       if (hasRoles) {
-        next();
+        if (to.path === '/' && store.getters.roles.includes('admin') ) {
+          next({ path: '/admin/users' });
+        } else {
+          next();
+        }
       } else {
         try {
           const UserInfo = await store.dispatch('user/getInfo');

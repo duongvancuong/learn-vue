@@ -51,34 +51,46 @@ export const constantRoutes = [
         name: 'employee-profile',
       },
     ],
-    },
-  { path: '*', redirect: '/404', hidden: true }
+  },
 ];
 
 export const asyncRoutes = [
   {
     path: '/admin',
     name: 'admin',
+    hidden: false,
+    alwaysShow: true,
+    redirect: '/admin/users',
     component: () => import('@/layout'),
+    children: [
+      {
+        path: 'users',
+        component: () => import('@/views/admin/Index'),
+        name: 'user_list',
+        meta: {
+          title: 'User List',
+        },
+      },
+    ],
     meta: {
       title: 'Admin Site',
     }
-  }
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ];
 
 const createRouter = () => new Router({
-  mode: 'history', // require service support
+  mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+  routes: constantRoutes,
+});
 
-const router = createRouter()
+const router = createRouter();
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher;
 }
-
 
 export default router;

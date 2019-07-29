@@ -21,7 +21,7 @@ const mutations = {
     state.id = info.id,
     state.email = info.email;
     state.last_name = info.last_name;
-    state.last_name = info.last_name;
+    state.first_name = info.first_name;
     state.avatar = info.avatar;
   },
   SET_ROLES: (state, roles) => {
@@ -29,7 +29,7 @@ const mutations = {
   },
   SET_PREMISSIONS: (state, permissions) => {
     state.permissions = permissions;
-  }
+  },
 };
 
 const actions = {
@@ -44,15 +44,15 @@ const actions = {
         resolve();
       }).catch(error => {
         reject(error);
-      })
-    })
+      });
+    });
   },
 
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        const data  = response;
+        const data  = response.data;
         if (!data) {
           reject('Verification failed, please Login again.');
         }
@@ -68,8 +68,8 @@ const actions = {
         resolve({ ...data, roles: ['admin'], permissions: ['admin'] });
       }).catch(error => {
         reject(error);
-      })
-    })
+      });
+    });
   },
 
   // user logout
@@ -94,7 +94,7 @@ const actions = {
       commit('SET_ROLES', []);
       removeToken();
       resolve();
-    })
+    });
   }
 }
 
