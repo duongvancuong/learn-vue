@@ -13,6 +13,7 @@ import imgView from './modules/imgView';
 import post from './modules/post';
 import user from './modules/user';
 import permission from './modules/permission';
+import member from './modules/member';
 
 Vue.use(Vuex);
 
@@ -31,6 +32,7 @@ export const store = new Vuex.Store({
     post,
     user,
     permission,
+    member,
   },
   // plugins: [
   //   createPersistedState({

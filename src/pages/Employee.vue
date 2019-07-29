@@ -39,7 +39,7 @@ export default {
     })
   },
   created() {
-    this.$store.dispatch('getListData');
+    this.$store.dispatch('getUsers');
   },
   methods: {
     ...mapActions([
